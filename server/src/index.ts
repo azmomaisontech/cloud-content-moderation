@@ -1,4 +1,4 @@
-import config from "config/config"
+import config from "./config/config"
 import app from "../src/services/app"
 
 app.listen(config.port, () => {
