@@ -1,6 +1,6 @@
 {
   "private": true,
-  "script": {
+  "scripts": {
     "start": "nodemon --watch src src/index.ts"
   },
   "dependencies": {
