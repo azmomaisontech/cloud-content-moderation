@@ -6,7 +6,7 @@ type Props = {
   reviewing?: boolean;
 };
 
-export default function ProfilePic({reviewing = false }: Props) {
+export default function Avatar({reviewing = false }: Props) {
   const {image} = useAppState()
   return (
     <ProfilePicWrapper>

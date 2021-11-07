@@ -2,7 +2,7 @@ import Layout from "../../components/layout/layout";
 import { Container } from "../../styles/utils";
 import Form from "../../components/form/form";
 import { ProfileWrapper } from "./styles";
-import ProfilePic from "../../components/profile-pic/profile-pic";
+import Avatar from "../../components/avatar/avatar";
 
 export default function Profile() {
   return (
@@ -11,7 +11,7 @@ export default function Profile() {
         <Container>
           <h1>Profile</h1>
           <Form />
-          <ProfilePic />
+          <Avatar />
         </Container>
       </ProfileWrapper>
     </Layout>

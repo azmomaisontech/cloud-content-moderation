@@ -1,7 +1,6 @@
 import React from "react";
 import { FormWrapper } from "./styles";
 import Input from "./input";
-import { useAppState } from "../../app-state/app-state";
 
 export default function Form() {
   const [data, setData] = React.useState({
@@ -17,11 +16,6 @@ export default function Form() {
     },
     [],
   );
-
-  React.useEffect(() => {
-    const { setImage } = useAppState();
-    setImage({ src: data.profilePic, alt: data.userId });
-  }, [data]);
 
   return (
     <FormWrapper>

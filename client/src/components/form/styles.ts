@@ -5,5 +5,5 @@ export const FormWrapper = styled.section`
 `
 
 export const InputGroup = styled.div`
-
+  margin-bottom: 1em;
 `
