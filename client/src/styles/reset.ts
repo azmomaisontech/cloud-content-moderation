@@ -1,5 +1,5 @@
-import {createGlobalStyle,css} from "styled-components"
-import {vars} from "./vars";
+import { createGlobalStyle } from "styled-components";
+import { vars } from "./vars";
 
 export default createGlobalStyle`
 
@@ -26,4 +26,4 @@ export default createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     text-rendering: geometricPrecision;
   }
-`
+`;
