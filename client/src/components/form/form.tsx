@@ -1,6 +1,7 @@
 import React from "react";
 import { FormWrapper } from "./styles";
 import Input from "./input";
+import { useAppState } from "../../app-state/app-state";
 
 export default function Form() {
   const [data, setData] = React.useState({
@@ -9,7 +10,6 @@ export default function Form() {
   });
   const handleChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      console.log("ere");
       setData((prevState) => ({
         ...prevState,
         [event.target.name]: event.target.value,
@@ -18,7 +18,11 @@ export default function Form() {
     [],
   );
 
-  console.log(data)
+  React.useEffect(() => {
+    const { setImage } = useAppState();
+    setImage({ src: data.profilePic, alt: data.userId });
+  }, [data]);
+
   return (
     <FormWrapper>
       <form>
