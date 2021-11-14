@@ -11,11 +11,13 @@ type Props = {
   id: string;
 };
 
-export default function Input(props: Props) {
+function Input(props: Props, ref: any) {
   return (
     <InputGroup>
       <label htmlFor={props.id}>{props.label} : </label>
-      <input {...props} />
+      <input {...props} ref={ref} />
     </InputGroup>
   );
 }
+
+export default React.forwardRef(Input);
