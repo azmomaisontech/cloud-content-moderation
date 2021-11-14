@@ -14,5 +14,9 @@ export default {
     region: "eu-west-2",
     bucketName: "breeza",
     imageFolder: "image-uploads"
+  },
+  azure: {
+    ocpSubKey: "",
+    apiEndpoint: ""
   }
 };

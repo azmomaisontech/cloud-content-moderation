@@ -16,7 +16,7 @@ export default function useForm(afterSubmit: () => void) {
   const handleSubmit = React.useCallback(
     async (event) => {
       event.preventDefault();
-      const { setUploadProgress, setUploading, setUploaded, setImage } =
+      const { setUploadProgress, setUploading, setUploaded, setImage, setReviewed } =
         useAppState.getState();
       setUploading(true);
       if (!profilePic) return;
@@ -27,11 +27,11 @@ export default function useForm(afterSubmit: () => void) {
       setErrors(errors);
       if(res.status === 200) {
         setImage({
-          src: res.data,
+          src: res.data.profilePic,
           alt: "Blue Box"
         })
+        setReviewed(res.data.reviewed)
       }
-      // setImage({ src: res.data.imageUrl, alt: "10" });
       setProfilePic(null);
       if (afterSubmit) {
         afterSubmit();

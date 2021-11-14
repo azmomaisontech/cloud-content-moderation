@@ -8,8 +8,8 @@ export type ImageType = {
 export type AppState = {
   image: ImageType | null;
   setImage: (image: ImageType) => void;
-  reviewing: boolean;
-  setReviewing: (reviewing: boolean) => void;
+  reviewed: boolean;
+  setReviewed: (reviewing: boolean) => void;
   uploadProgress: number;
   setUploadProgress: (uploadProgress: number) => void;
   uploading: boolean;
@@ -24,9 +24,9 @@ export const useAppState = create<AppState>((set) => {
     setImage(image: ImageType) {
       set({ image });
     },
-    reviewing: false,
-    setReviewing(reviewing: boolean) {
-      set({ reviewing });
+    reviewed: false,
+    setReviewed(reviewed: boolean) {
+      set({ reviewed });
     },
     uploadProgress: 0,
     setUploadProgress(uploadProgress: number) {

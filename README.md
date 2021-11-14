@@ -1,5 +1,7 @@
 # Cloud Content Moderation Application
 
+A fullStack application(React UI/ ExpressJS Node Server) for Image handling - Upload, and Moderation. 
+
 
 ### Software Requirements
 

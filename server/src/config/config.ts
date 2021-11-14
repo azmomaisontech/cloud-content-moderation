@@ -11,5 +11,7 @@ export default {
   s3SecretKey: env.s3Bucket.secretKey,
   s3Region: env.s3Bucket.region,
   s3BucketName: env.s3Bucket.bucketName,
-  s3ImageFolder: env.s3Bucket.imageFolder
+  s3ImageFolder: env.s3Bucket.imageFolder,
+  azureEndpoint: env.azure.apiEndpoint,
+  azureKey: env.azure.ocpSubKey
 }
