@@ -1,17 +1,21 @@
 import React from "react";
-import {Image, ProfilePicWrapper, Review} from "./styles";
-import {useAppState} from "../../app-state/app-state";
+import { Image, ProfilePicWrapper, Review, UploadProgress } from "./styles";
+import { useAppState } from "../../app-state/app-state";
 
-type Props = {
-  reviewing?: boolean;
-};
-
-export default function Avatar({reviewing = false }: Props) {
-  const {image} = useAppState()
+export default function Avatar() {
+  const { image, reviewing, uploadProgress, uploading, uploaded } =
+    useAppState();
   return (
     <ProfilePicWrapper>
-      {image && <Image src={image?.src} alt={image?.alt} />}
-      {reviewing && <Review>Under Review <br /> Please Wait</Review>}
+      {image && <Image src={image?.src} alt={image?.alt || "User 1"} />}
+      {!uploaded && uploading && uploadProgress && (
+        <UploadProgress>{uploadProgress}</UploadProgress>
+      )}
+      {reviewing && (
+        <Review>
+          Under Review <br /> Please Wait
+        </Review>
+      )}
     </ProfilePicWrapper>
   );
 }

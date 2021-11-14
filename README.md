@@ -3,7 +3,8 @@
 
 ### Software Requirements
 
-- To come
+- Node v14.18.1
+- Npm v6.14.15
 
 ### Getting Started
 
@@ -18,3 +19,8 @@ npm start
 # UI -> http://localhost:3000
 # Server -> http://localhost:8080
 ```
+
+### Azure Pricing
+- Image Size: minimum 128 pixels, maximum 4 MB size
+- 1 call/sec for Free tier
+- 5,000 Transactions / Month for Free tier

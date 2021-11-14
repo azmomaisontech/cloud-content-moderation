@@ -16,12 +16,13 @@ export default async function upload(req: Request, res: Response) {
   try {
     const file = req.files.file as UploadedFile;
     const extension = file.mimetype.split("/")[1] ?? "png";
-    const userId = Math.floor(Math.random() * 100) + 1;
+    const userId = file.name;
     const filename = `${userId}.${extension}`;
     const params = {
       Bucket: config.s3BucketName,
       Key: `${config.s3ImageFolder}/${filename}`,
       Body: file.data,
+      ACL:'public-read'
     };
     await s3Client.send(new PutObjectCommand(params));
     const imageUrl = `${config.s3BucketUrl}/${filename}`;
@@ -29,7 +30,7 @@ export default async function upload(req: Request, res: Response) {
       userId,
       profilePic: imageUrl,
     });
-    res.json({ imageUrl });
+    res.json({ data: imageUrl });
   } catch (error) {
     console.error(error);
     res.status(500).json({ errors: { server: "Failed to upload video" } });

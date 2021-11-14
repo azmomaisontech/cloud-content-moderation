@@ -23,7 +23,7 @@ export default {
     });
     try {
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", file, "10");
       const res = await req.post("/api/v1/uploads", formData, {
         onUploadProgress(event) {
           if (!onProgress) return;

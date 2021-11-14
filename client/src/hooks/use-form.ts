@@ -1,10 +1,8 @@
 import React from "react";
 import api from "../services/api";
+import { useAppState } from "../app-state/app-state";
 
 export default function useForm(afterSubmit: () => void) {
-  const [uploadProgress, setUploadProgress] = React.useState(0);
-  const [uploading, setUploading] = React.useState(false);
-  const [uploaded, setUploaded] = React.useState(false);
   const [errors, setErrors] = React.useState({});
   const [profilePic, setProfilePic] = React.useState<File | null>();
 
@@ -18,6 +16,8 @@ export default function useForm(afterSubmit: () => void) {
   const handleSubmit = React.useCallback(
     async (event) => {
       event.preventDefault();
+      const { setUploadProgress, setUploading, setUploaded, setImage } =
+        useAppState.getState();
       setUploading(true);
       if (!profilePic) return;
       const res = await api.uploadImage(profilePic, setUploadProgress);
@@ -25,6 +25,13 @@ export default function useForm(afterSubmit: () => void) {
       setUploading(false);
       setUploaded(Object.keys(errors).length === 0);
       setErrors(errors);
+      if(res.status === 200) {
+        setImage({
+          src: res.data,
+          alt: "Blue Box"
+        })
+      }
+      // setImage({ src: res.data.imageUrl, alt: "10" });
       setProfilePic(null);
       if (afterSubmit) {
         afterSubmit();
@@ -37,9 +44,6 @@ export default function useForm(afterSubmit: () => void) {
     handleChange,
     handleSubmit,
     profilePic,
-    uploadProgress,
-    uploading,
-    uploaded,
     errors,
   };
 }
