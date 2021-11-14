@@ -24,6 +24,13 @@ app.all("*", (req, res) => {
   res.status(404).json({ errors: { server: "Not found" } });
 });
 
-app.listen(config.port, () => {
+const server = app.listen(config.port, () => {
   console.log(`Server running on port ${config.port}`);
+});
+
+process.on("unhandledRejection", (error, promise) => {
+  console.log(error);
+
+  // Stop server and exit
+  server.close(() => process.exit(1));
 });
