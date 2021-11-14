@@ -8,8 +8,8 @@ import connectDatabase from "./services/database";
 const app = express();
 
 connectDatabase().catch(() => {
-  process.exit(1)
-})
+  process.exit(1);
+});
 
 app.use(express.json());
 app.use(cors({ origin: config.appUrl, credentials: true }));
@@ -18,19 +18,16 @@ app.use(
     limits: { fileSize: config.fileUploadLimit },
   }),
 );
-app.use("/api/v1/uploads", upload)
+app.use("/api/v1/uploads", upload);
 
 app.all("*", (req, res) => {
   res.status(404).json({ errors: { server: "Not found" } });
 });
 
-const server = app.listen(config.port, () => {
+app.listen(config.port, () => {
   console.log(`Server running on port ${config.port}`);
 });
 
 process.on("unhandledRejection", (error, promise) => {
   console.log(error);
-
-  // Stop server and exit
-  server.close(() => process.exit(1));
 });
