@@ -1,7 +1,7 @@
 import * as express from "express";
-import uploadVideo from "../controllers/upload";
+import upload from "../controllers/upload";
 const router = express.Router()
 
-router.post("/upload", uploadVideo)
+router.route("/").post(upload)
 
 export default router;

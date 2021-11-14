@@ -6,6 +6,13 @@ export default {
   fileUploadLimit: 2 * 1024 * 1024,
   database: {
     mongoDB: "",
-    s3Bucket: ""
+  },
+  s3Bucket: {
+    uri: "",
+    accessKey: "",
+    secretKey: "",
+    region: "eu-west-2",
+    bucketName: "breeza",
+    imageFolder: "image-uploads"
   }
 };

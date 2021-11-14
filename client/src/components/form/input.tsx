@@ -2,35 +2,20 @@ import React from "react";
 import { InputGroup } from "./styles";
 
 type Props = {
-  onChange: React.ChangeEventHandler<HTMLInputElement>
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   type?: "text" | "file";
-  name: string;
+  name?: string;
   value?: any;
   required?: boolean;
   label: string;
   id: string;
 };
 
-export default function Input({
-  onChange,
-  name,
-  value,
-  label,
-  id,
-  type = "text",
-  required = false,
-}: Props) {
+export default function Input(props: Props) {
   return (
     <InputGroup>
-      <label htmlFor={id}>{label} : </label>
-      <input
-        type={type}
-        id={id}
-        name={name}
-        value={value ?? undefined}
-        onChange={onChange}
-        required={required}
-      />
+      <label htmlFor={props.id}>{props.label} : </label>
+      <input {...props} />
     </InputGroup>
   );
 }

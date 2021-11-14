@@ -1,3 +1,4 @@
 export default {
-  mode: "development"
+  mode: "development",
+  apiEndpoint: "http://localhost:8080"
 }

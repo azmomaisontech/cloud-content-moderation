@@ -6,5 +6,10 @@ export default {
   appUrl: env.appUrl,
   fileUploadLimit: env.fileUploadLimit,
   mongoDBUrl : env.database.mongoDB,
-  s3BucketUrl: env.database.s3Bucket
+  s3BucketUrl: env.s3Bucket.url,
+  s3AccessKey: env.s3Bucket.accessKey,
+  s3SecretKey: env.s3Bucket.secretKey,
+  s3Region: env.s3Bucket.region,
+  s3BucketName: env.s3Bucket.bucketName,
+  s3ImageFolder: env.s3Bucket.imageFolder
 }

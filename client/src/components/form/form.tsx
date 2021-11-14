@@ -1,40 +1,23 @@
 import React from "react";
 import { FormWrapper } from "./styles";
 import Input from "./input";
+import useForm from "../../hooks/use-form";
 
 export default function Form() {
-  const [data, setData] = React.useState({
-    userId: "",
-    profilePic: "",
-  });
-  const handleChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setData((prevState) => ({
-        ...prevState,
-        [event.target.name]: event.target.value,
-      }));
-    },
-    [],
-  );
+  const {handleSubmit, handleChange} = useForm()
 
   return (
     <FormWrapper>
-      <form>
-        <Input
-          onChange={handleChange}
-          id="user-id"
-          label="User Id"
-          name="userId"
-          value={data.userId}
-        />
+      <form onSubmit={handleSubmit}>
         <Input
           type="file"
           onChange={handleChange}
           id="profilePic"
           label="Profile Picture"
           name="profilePic"
-          value={data.profilePic}
+          required
         />
+        <button type="submit">Submit</button>
       </form>
     </FormWrapper>
   );
